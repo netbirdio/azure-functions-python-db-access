@@ -15,10 +15,10 @@ async def HttpExample(req: func.HttpRequest) -> func.HttpResponse:
     socks.set_default_proxy(socks.SOCKS5, "127.0.0.1", os.getenv('NB_SOCKS5_LISTENER_PORT', '1080'))
     socket.socket = socks.socksocket
 
-    conn = await asyncpg.connect(user=os.getenv('EXAMPLE_VAR', 'postgres'),
-                                 password=os.getenv('EXAMPLE_VAR', 'postgres'),
-                                 database=os.getenv('EXAMPLE_VAR', 'postgres'),
-                                 host=os.getenv('EXAMPLE_VAR', '127.0.0.1'))
+    conn = await asyncpg.connect(user=os.getenv('POSTGRES_USER', 'postgres'),
+                                 password=os.getenv('POSTGRES_PASSWORD', 'postgres'),
+                                 database=os.getenv('POSTGRES_DB', 'postgres'),
+                                 host=os.getenv('POSTGRES_HOST', '127.0.0.1'))
 
     # Get the visitor's IP address
     visitor_ip = req.headers.get('X-Forwarded-For')
