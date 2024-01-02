@@ -1,7 +1,7 @@
-# azure functions python db access example
-This repository is an example of accessing a database from a containerized Azure Function written in Python using NetBird's Netstack mode.
+# Azure functions python db access example
+This repository is an example of accessing a database from a containerized [Azure function](https://azure.microsoft.com/en-us/products/functions/) written in Python using NetBird's netstack mode.
 
-Netstack mode allows you to access resources in a NetBird network from an Azure Function. This mode is helpful if you want to access a database or other resource not exposed to the public internet from a limited environment like Azure functions.
+Netstack mode allows you to access resources in a NetBird network from serverless environments like [Azure functions](https://azure.microsoft.com/en-us/products/functions/) or [AWS Lambda](https://aws.amazon.com/pm/lambda/). Such environments are usually limited and do not allow creation and access to the host's network interfaces, e.g., the WireGuard interface. To work these limitations around, NetBird uses the [wireguard-go netstack](https://pkg.go.dev/golang.zx2c4.com/wireguard/tun/netstack) that emulates tun device and provides an interface to this device via a sock5 proxy. The applications can use this interface to interact with the network device by sending packets to it.
 
 ## How it works
 The function_app.py contains the testing code. It uses socks and socket libraries to connect to the Postgres database. NetBird provides the socks proxy. The Postgres driver uses the socket connection to connect to the remote database.
