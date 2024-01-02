@@ -12,7 +12,7 @@ app = func.FunctionApp()
 async def HttpExample(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
     # Set up the SOCKS5 proxy
-    socks.set_default_proxy(socks.SOCKS5, "127.0.0.1", os.getenv('NB_SOCKS5_LISTENER_PORT', '1080'))
+    socks.set_default_proxy(socks.SOCKS5, "127.0.0.1", int(os.getenv('NB_SOCKS5_LISTENER_PORT', '1080')))
     socket.socket = socks.socksocket
 
     conn = await asyncpg.connect(user=os.getenv('POSTGRES_USER', 'postgres'),
