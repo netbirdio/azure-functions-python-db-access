@@ -13,7 +13,7 @@ Besides the Python code and Azure function specifics. We've added two custom fil
 ## Prerequisites
 - An existing Azure function. You can follow the steps here: https://learn.microsoft.com/en-us/azure/azure-functions/functions-deploy-container?tabs=docker%2Cbash%2Cazure-cli&pivots=programming-language-python
 - Docker for local build
-- An internal Postgres database with netbird enabled
+- An internal Postgres database with netbird enabled (You can use the NetBird Postgres example: [/postgres-example](/postgres-example))
 
 ## Create the database table
 Access the Postgres database and create the table using the following statement:

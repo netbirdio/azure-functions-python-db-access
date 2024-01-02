@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./postgres:/var/lib/postgresql
+  netbird:
+    image: netbirdio/netbird:latest
+    volumes:
+      - ./client:/etc/netbird
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+    environment:
+      NB_SETUP_KEY: XXXX-XXXX-XXXX-XXXX
+      NB_HOSTNAME: postgres-dev
+    network_mode: "service:postgres"
