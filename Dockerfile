@@ -1,4 +1,4 @@
-FROM wiretrustee/wiretrustee:pr-1403 as netbird-build
+FROM netbirdio/netbird:latest as netbird-build
 FROM mcr.microsoft.com/azure-functions/python:4-python3.9
 
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
